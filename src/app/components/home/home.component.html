@@ -1,0 +1,46 @@
+<div [fxLayoutGap]="'50px'" class="wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="center start" [formGroup]="form">
+  <mat-card [fxLayoutGap]="'50px'" fxFlex="80" fxFlexFill fxLayout="column" fxLayoutAlign="start center" >
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="40px">
+      <h2>VAT Calculation Austria</h2>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-radio-group fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="40px" formControlName="vat">
+        <mat-radio-button value="10">10 % VAT</mat-radio-button>
+        <mat-radio-button value="13">13 % VAT</mat-radio-button>
+        <mat-radio-button value="20">20 % VAT</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center space-between ">
+<mat-radio-group formControlName="calculatedVat">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-radio-button value="1">Price without VAT</mat-radio-button>
+        <mat-form-field appearance="fill" class="example-full-width" fxFlex="40">
+          <input matInput formControlName="withoutVat" (keyup)="vatCalc()">
+          <mat-error *ngIf="form.get('withoutVat')?.invalid">Only integers Numbers</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-radio-button value="2">Value-Added Tax</mat-radio-button>
+        <mat-form-field appearance="fill" class="example-full-width" fxFlex="40">
+          <input matInput formControlName="addedTax" (keyup)="vatCalc()">
+          <mat-error *ngIf="form.get('addedTax')?.invalid">Only integers Numbers</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-radio-button value="3">Price Incl. VAT</mat-radio-button>
+        <mat-form-field appearance="fill" class="example-full-width" fxFlex="40">
+          <input matInput type="number" formControlName="vatIncluded" (keyup)="vatCalc()">
+          <mat-error *ngIf="form.get('vatIncluded')?.invalid">Only integers Numbers</mat-error>
+
+
+        </mat-form-field>
+      </div>
+</mat-radio-group>
+    </div>
+
+  </mat-card>
+</div>
